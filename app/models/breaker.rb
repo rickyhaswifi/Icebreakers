@@ -1,0 +1,2 @@
+class Breaker < ApplicationRecord
+end
