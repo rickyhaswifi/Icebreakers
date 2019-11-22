@@ -1,11 +1,12 @@
 class Api::BreakersController < ApplicationController
-
+	before_action :set_subject
+	
 	def index
-		render json: Breaker.all
+		render json: subject.breakers.all
 	end
 
 	def create
-		breaker = Breaker.new(breaker_params)
+		breaker = subject.breakers.new(breaker_params)
 		if breaker.save
 				render json: breaker
 		else
@@ -14,7 +15,7 @@ class Api::BreakersController < ApplicationController
 	end
 
 	def update
-		breaker = Breaker.find(params[:id])
+		breaker = subject.breakers.find(params[:id])
 		render json: breaker
 	end
 
@@ -23,8 +24,13 @@ class Api::BreakersController < ApplicationController
 		render json: {message: 'Breaker deleted'}
 	end
 
-	private breaker_params
+	private 
+	def breaker_params
 	params.require(:breaker).permit(:image, :name, :description, :rating)
+	end
+
+	def set_subject
+		subject = Subject.find(params[:subject_id])
 	end
 
 end
