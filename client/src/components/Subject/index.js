@@ -10,17 +10,18 @@ return(
     <>
     <section>
     <ul>
-        {value.subjects.map(subject => 
-          <ConnectedSubjectList 
-          key={subject.id}
-          {...subject}
-          updateSubject={value.updateSubject}
-          deleteSubject={value.deleteSubject}
-          />
-        )}
-      </ul>  
+      {value.subjects.map((subject,index) => 
+        <ConnectedSubjectList 
+        key={subject.index}
+        {...subject}
+        updateSubject={value.updateSubject}
+        deleteSubject={value.deleteSubject}
+        />
+      )}
+    </ul>  
     </section>
-    <Link to='/subject/form'>Add Subject</Link>
+
+    {/* <Link to='/form'>Add Subject</Link> */}
     </>
   )
 }

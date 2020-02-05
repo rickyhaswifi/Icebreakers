@@ -1,11 +1,11 @@
 import React from 'react';
 import Subject from '../Subject/index'
-import Nav from '../Shared/Nav'
+import {Link} from 'react-router-dom';
 
 const Home = () => (
   <>
-  <Nav />
   <Subject />
+  <a href='/form'>Add Subject</a>
   </>
 )
 

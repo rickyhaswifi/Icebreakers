@@ -7,8 +7,8 @@ export const BreakerConsumer = BreakerContext.Consumer;
 class BreakerProvider extends Component {
   state = { breakers: [] }
 
-  componentDidMount() {
-    axios.get(`/api/subjects/breakers/`)
+  componentDidMount(id) {
+    axios.get(`/api/subjects/${id}/breakers/`)
       .then( res => {
         this.setState({ breakers: res.data })
       })
@@ -29,8 +29,8 @@ class BreakerProvider extends Component {
      })
   }
 
-  updateBreaker = (id, subject) => {
-    axios.put(`/api/subjects/${id}/breakers/${id}`, { subject })
+  updateBreaker = (id, breaker) => {
+    axios.put(`/api/subjects/${id}/breakers/${id}`, { breaker })
       .then( res => {
         const breakers = this.state.breakers.map( b => {
           if (b.id === id)
